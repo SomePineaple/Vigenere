@@ -121,8 +121,6 @@ def encrypt(message, message_key):
         key_letter = message_key[i % len(message_key)]
         new_char = get_encrypted_letter(original_char, key_letter)
         encrypted_message += new_char
-        if i % 25 == 0 and i > 10:
-            encrypted_message += '\n'
     return encrypted_message
 
 
