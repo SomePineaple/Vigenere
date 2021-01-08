@@ -1,5 +1,6 @@
 mod utils;
 mod encryption;
+mod decryption;
 
 fn main() {
     let alphabets: [&str; 78] = [
@@ -104,69 +105,6 @@ fn main() {
     if encrypting {
         println!("Encrypted text:\n{}", encryption::encrypt(text, &key, alphabets));
     } else {
-        println!("Decrypted text:\n{}", decrypt(text, &key, alphabets));
+        println!("Decrypted text:\n{}", decryption::decrypt(text, &key, alphabets));
     }
-}
-
-fn decrypt (encrypted_message: String, message_key: &String, alphabets: [&str; 78]) -> String {
-    let mut decrypted_message = String::new();
-
-    let mut i = 0;
-
-    for letter in encrypted_message.chars() {
-        let key_letter = get_letter_of_other_string(message_key, i % message_key.len());
-        decrypted_message.push(get_decrypted_letter(letter, key_letter, alphabets));
-        i += 1;
-    }
-
-    return decrypted_message;
-}
-
-fn get_decrypted_letter(encrypted: char, key_letter: char, alphabets: [&str; 78]) -> char {
-    let key_letter_of_alphabet: usize = get_letter_of_alphabet(key_letter, alphabets[0]);
-    let alphabet = alphabets[key_letter_of_alphabet];
-
-    let decrypted_letter = get_letter_of_string(alphabets[0], get_letter_of_alphabet(encrypted, alphabet));
-
-    return decrypted_letter;
-}
-
-fn get_letter_of_string(string: &str, index: usize) -> char {
-    let mut i = 0;
-    for letter in string.chars() {
-        if i == index {
-            return letter;
-        }
-
-        i += 1;
-    }
-
-    return '*';
-}
-
-fn get_letter_of_other_string(string: &String, index: usize) -> char {
-    let mut i = 0;
-    for letter in string.chars() {
-        if i == index {
-            return letter;
-        }
-
-        i += 1;
-    }
-
-    return '*';
-}
-
-fn get_letter_of_alphabet(letter: char, alphabet: &str) -> usize {
-    let mut i = 0;
-
-    for x in alphabet.chars() {
-        if x.eq(&letter) {
-            return i;
-        }
-
-        i += 1;
-    }
-
-    return 69;
 }
