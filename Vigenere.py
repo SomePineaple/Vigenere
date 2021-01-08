@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 mode = raw_input('Enter a mode, either encrypt or decrypt: ')
 
 text = ''
@@ -146,9 +148,3 @@ if mode == 'decrypt':
 else:
     print 'Encrypted text:\n' + new_text
 
-# h6$%(c)97'9dX9&Ab6*6ZC(AX'
-# &75ESYka8)$W"a005#Z (c 6$
-# %b!%(Z"(*5Y)85,%%Z@8^X,0C
-
-
-# ai45yB*IGUxDP)@7Vut
